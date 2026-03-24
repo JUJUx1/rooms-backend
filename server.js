@@ -15,7 +15,7 @@ const cors       = require('cors');
 const app    = express();
 const server = http.createServer(app);
 
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:5500';
+const FRONTEND_URL = (process.env.FRONTEND_URL || 'http://localhost:5500').replace(/\/+$/, '');
 
 const io = new Server(server, {
   cors: { origin: FRONTEND_URL, credentials: true, methods: ['GET','POST'] }
